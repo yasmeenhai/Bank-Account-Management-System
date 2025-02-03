@@ -144,7 +144,7 @@ void withdrawMoney(){
     struct node* temp = head;
     while (temp != NULL) {
         if (temp->data.id == num) { 
-            printf("Deposit amount: ");
+            printf("Withdraw amount: ");
             double amount;
             scanf("%lf", &amount);
         if (temp->data.balance < amount ){
