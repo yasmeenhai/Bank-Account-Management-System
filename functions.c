@@ -212,7 +212,7 @@ void deleteAccount() {
             // Free the memory allocated for the node
             free(temp);
 
-            printf("Account with ID %d has been successfully deleted.\n", num);
+            printf("Account with ID %d has been successfully deleted.\n\n\n", num);
             return;  // Exit the function as the account has been deleted
         }
 
@@ -222,7 +222,7 @@ void deleteAccount() {
     }
 
     // If the account with the given ID was not found
-    printf("Account with ID %d not found.\n", num);
+    printf("Account with ID %d not found.\n\n\n", num);
 }
 
 void exitprogram() {
