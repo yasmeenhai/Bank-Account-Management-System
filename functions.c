@@ -112,76 +112,56 @@ void updateAccountByID(){
     return;
 }
 
- void depositMoney(){
+void depositMoney() {
     printf("Please enter account ID: ");
     int num;
-    int found = 0;
+    scanf("%d", &num); 
+
     struct node* temp = head;
-
     while (temp != NULL) {
-        scanf("%d", &num); 
-
         if (temp->data.id == num) { 
-            found = 1;  
-            break;
+            printf("Deposit amount: ");
+            double amount;
+            scanf("%lf", &amount);
+
+            temp->data.balance += amount;
+            printf("Successful transaction! New balance: %.2lf\n\n", temp->data.balance);
+            return; 
         }
-        temp = temp->next;  
+        temp = temp->next;
     }
 
-    // If the account is not found
-    if (!found) {
-        printf("Incorrect ID, please enter a valid account ID: \n\n");
-        return;  
-    }
-
-    
-    printf("Deposit amount: ");
-    double amount;
-    scanf("%lf", &amount);  
-
-    // Update the balance
-    temp->data.balance += amount;
-    printf("Successful transaction! New balance: %.2lf\n\n", temp->data.balance);
-
-    return;
+    // If the loop finishes without finding the ID
+    printf("Incorrect ID, no account found with this ID.\n\n");
 }
 
 void withdrawMoney(){
     
     printf("Please enter account ID: ");
     int num;
-    int found = 0;
+    scanf("%d", &num); 
+
     struct node* temp = head;
-
     while (temp != NULL) {
-        scanf("%d", &num); 
-
         if (temp->data.id == num) { 
-            found = 1;  
-            break;
+            printf("Deposit amount: ");
+            double amount;
+            scanf("%lf", &amount);
+        if (temp->data.balance < amount ){
+            printf("Error: Insufficient funds. Your current balance is %.2lf.\n", temp->data.balance);
+            return; 
         }
-        temp = temp->next;  
+        else {
+            temp->data.balance -= amount;
+            printf("Successful transaction! New balance: %.2lf\n\n", temp->data.balance);
+            return; 
+        }
+        }
+        temp = temp->next;
     }
 
-    // If the account is not found
-    if (!found) {
-        printf("Incorrect ID, please enter a valid account ID: \n\n");
-        return;  
-    }
-
-    
-    printf("Withdraw amount: ");
-    double amount;
-    scanf("%lf", &amount);  
-    if (temp->data.balance > amount){
-    // Update the balance
-    temp->data.balance -= amount;
-    printf("Successful transaction! New balance: %.2lf\n\n", temp->data.balance);
-    }
-    else {
-        printf ("Insufficient funds. Your current balance is %.2lf.\n\n\n", temp->data.balance);
-    }
-    return;
+    // If the loop finishes without finding the ID
+    printf("Incorrect ID, no account found with this ID.\n\n");
 
 }
 
@@ -244,7 +224,6 @@ void deleteAccount() {
     // If the account with the given ID was not found
     printf("Account with ID %d not found.\n", num);
 }
-
 
 void exitprogram() {
     struct node* temp = head;
