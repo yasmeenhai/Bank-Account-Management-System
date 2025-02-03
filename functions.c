@@ -148,7 +148,7 @@ void withdrawMoney(){
             double amount;
             scanf("%lf", &amount);
         if (temp->data.balance < amount ){
-            printf("Error: Insufficient funds. Your current balance is %.2lf.\n", temp->data.balance);
+            printf("Error: Insufficient funds. Your current balance is %.2lf.\n\n\n", temp->data.balance);
             return; 
         }
         else {
